@@ -9,6 +9,9 @@ private_data.json
 # workspace files are user-specific
 *.sublime-workspace
 
+# no one else cares about sublime projects
+*.sublime-project
+
 # sftp configuration file
 sftp-config.json
 
