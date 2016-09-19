@@ -95,6 +95,31 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#kiosk-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    opacity: 0.6;
+    padding: 0.25em;
+    padding-left: 20px;
+    color: white;
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 250%;
+}
+
+#kiosk-main {
+    min-height: 100%;
+    max-height: 1050px;
+    max-width: 1680px;
+}
+
+#reddit-content {
+    max-width: 100%;
+}
+
 
 
 

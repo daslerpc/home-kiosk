@@ -9,62 +9,73 @@
 
 <html>
   <head>
+  	<link rel="stylesheet" href="kiosk.css">
     <script src="http://j.mp/jqymin"></script>
   </head>
 
   <body>
 
-    <div id="result"></div>
+  	<header id="kiosk-header">
 
-    <div id="reddit-content"></div>
+  		<p>It's always in the last place you look. No really. That's what "last" means.</p>
 
-    <script>
-      var imagesToPull = 20;
-      var index = Math.floor((Math.random() * (imagesToPull - 1)));
+  	</header>
 
-      $.getJSON("http://www.reddit.com/r/earthporn/hot/.json?count="+imagesToPull, function(data) { 
+  	<main id="kiosk-main">
 
-        
-        var imageSource = data.data.children[index].data.url;
-  
-        testImage(imageSource, record);
+	    <!-- <div id="result"></div>*/ -->
 
-        // currently seems to have trouble with links that don't end in .jpg
-        $("<img/>").attr("src", imageSource).appendTo("#reddit-content");
-      });
+	    <div id="reddit-content"></div>
+
+	    <script>
+	      var imagesToPull = 20;
+	      var index = Math.floor((Math.random() * (imagesToPull - 1)));
+
+	      $.getJSON("http://www.reddit.com/r/earthporn/hot/.json?count="+imagesToPull, function(data) { 
+
+	        
+	        var imageSource = data.data.children[index].data.url;
+	  
+	        testImage(imageSource, record);
+
+	        // currently seems to have trouble with links that don't end in .jpg
+	        $("<img/>").attr("src", imageSource).appendTo("#reddit-content");
+	      });
 
 
-      function testImage(url, callback, timeout) {
-    timeout = timeout || 5000;
-    var timedOut = false, timer;
-    var img = new Image();
-    img.onerror = img.onabort = function() {
-        if (!timedOut) {
-            clearTimeout(timer);
-            callback(url, "error");
-        }
-    };
-    img.onload = function() {
-        if (!timedOut) {
-            clearTimeout(timer);
-            callback(url, "success");
-        }
-    };
-    img.src = url;
-    timer = setTimeout(function() {
-        timedOut = true;
-        callback(url, "timeout");
-    }, timeout); 
-}
-    
+	      function testImage(url, callback, timeout) {
+	    timeout = timeout || 5000;
+	    var timedOut = false, timer;
+	    var img = new Image();
+	    img.onerror = img.onabort = function() {
+	        if (!timedOut) {
+	            clearTimeout(timer);
+	            callback(url, "error");
+	        }
+	    };
+	    img.onload = function() {
+	        if (!timedOut) {
+	            clearTimeout(timer);
+	            callback(url, "success");
+	        }
+	    };
+	    img.src = url;
+	    timer = setTimeout(function() {
+	        timedOut = true;
+	        callback(url, "timeout");
+	    }, timeout); 
+	}
+	    
 
-function record(url, result) {
-    document.getElementById("result").innerHTML += "<span class='" + result + "'>" + 
-        result + ": " + url + "</span><br>";
-} 
+	function record(url, result) {
+	    document.getElementById("result").innerHTML += "<span class='" + result + "'>" + 
+	        result + ": " + url + "</span><br>";
+	} 
 
-      
-    </script>
+	      
+	    </script>
+
+    </main>
 
   </body>
 </html>
