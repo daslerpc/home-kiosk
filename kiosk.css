@@ -100,10 +100,11 @@ textarea {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #333;
-    opacity: 0.6;
-    padding: 0.25em;
-    padding-left: 20px;
+    background: rgba(160, 160, 160, 0.5); /* so only the background is translucent */
+    padding: 1.5em;
+}
+
+#text-inspiration {
     color: white;
     font-family: sans-serif;
     font-style: italic;
