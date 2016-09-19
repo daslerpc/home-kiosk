@@ -15,34 +15,12 @@
 
   	<main id="kiosk-main">
 
-	    <!-- <div id="result"></div> -->
-
 	    <div id="reddit-content"></div>
 
 	    <script>
-	      var imagesToPull = 25;
-	      var quotesToPull = 25;
 
-	      var index = Math.floor((Math.random() * (imagesToPull - 1)));
-	      var quoteIndex = Math.floor((Math.random() * (quotesToPull - 1)));
-
-             $.getJSON("http://www.reddit.com/r/showerthoughts/hot/.json?count=" + quotesToPull, function(data) {
-			document.getElementById("text-inspiration").innerHTML = data.data.children[quoteIndex].data.title;	
-		});
-
-	      $.getJSON("http://www.reddit.com/r/earthporn/hot/.json?count="+imagesToPull, function(data) { 
-
-	        
-	        var imageSource = data.data.children[index].data.url;
-	  		var imageLoaded = "unset";
-
-	        imageLoaded = testImage(imageSource);
-	       // document.getElementById("text-inspiration").innerHTML += imageLoaded;
-
-	        // currently seems to have trouble with links that don't end in .jpg
-	        $("<img/>").attr("src", imageSource).appendTo("#reddit-content");
-	      });
-
+          setInspiration("text-inspiration");
+          setImage("reddit-content");
 	      
 	    </script>
 
