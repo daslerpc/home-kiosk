@@ -14,6 +14,7 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
+    background-color: #729f98;
 }
 
 /*
@@ -101,9 +102,10 @@ textarea {
 
 #text-inspiration {
     color: white;
-    font-family: sans-serif;
-    font-style: italic;
+    font-family: cursive;
+    /* font-style: italic; */
     font-size: 250%;
+    font-kerning: ;
     margin: 2%;
 }
 
@@ -117,7 +119,7 @@ textarea {
     right: 0;
     bottom: 0;
     width: 100%;
-    background: rgba(114,159,152,0.5);
+    /* background: rgba(114,159,152,0.4); */
     text-align: center;
 }
 
