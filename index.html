@@ -28,7 +28,14 @@
 
 	    <script>
 	      var imagesToPull = 20;
+	      var quotesToPull = 20;
+
 	      var index = Math.floor((Math.random() * (imagesToPull - 1)));
+	      var quoteIndex = Math.floor((Math.random() * (quotesToPull - 1)));
+
+             $.getJSON("http://www.reddit.com/r/showerthoughts/hot/.json?count=" + quotesToPull, function(data) {
+			document.getElementById("text-inspiration").innerHTML = data.data.children[quoteIndex].data.title;	
+		});
 
 	      $.getJSON("http://www.reddit.com/r/earthporn/hot/.json?count="+imagesToPull, function(data) { 
 
@@ -40,6 +47,7 @@
 	        // currently seems to have trouble with links that don't end in .jpg
 	        $("<img/>").attr("src", imageSource).appendTo("#reddit-content");
 	      });
+
 
 
 	      function testImage(url, callback, timeout) {
@@ -67,7 +75,7 @@
 	    
 
 	function record(url, result) {
-	    document.getElementById("result").innerHTML += "<span class='" + result + "'>" + 
+	    //document.getElementById("result").innerHTML += "<span class='" + result + "'>" + 
 	        result + ": " + url + "</span><br>";
 	} 
 
@@ -79,7 +87,7 @@
     <footer id="kiosk-footer"> 
 
     	<div id="text-inspiration">
-  			It's always in the last place you look. No really. That's what "last" means.
+  			"It's always in the last place you look. No really. That's what 'last' means."
 		</div>
 
     </footer>
