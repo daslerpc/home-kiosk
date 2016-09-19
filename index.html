@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-
-<!--
-  reddit image script by:
-    Stuart Powers
-    http://sente.cc/
-    http://twitter.com/stuartpowers
--->
-
 <html>
   <head>
   	<link rel="stylesheet" href="kiosk.css">
     <script src="http://j.mp/jqymin"></script>
+    <script src="script.js"></script>
   </head>
 
   <body>
@@ -27,8 +20,8 @@
 	    <div id="reddit-content"></div>
 
 	    <script>
-	      var imagesToPull = 20;
-	      var quotesToPull = 20;
+	      var imagesToPull = 25;
+	      var quotesToPull = 25;
 
 	      var index = Math.floor((Math.random() * (imagesToPull - 1)));
 	      var quoteIndex = Math.floor((Math.random() * (quotesToPull - 1)));
@@ -41,43 +34,14 @@
 
 	        
 	        var imageSource = data.data.children[index].data.url;
-	  
-	        testImage(imageSource, record);
+	  		var imageLoaded = "unset";
+
+	        imageLoaded = testImage(imageSource);
+	       // document.getElementById("text-inspiration").innerHTML += imageLoaded;
 
 	        // currently seems to have trouble with links that don't end in .jpg
 	        $("<img/>").attr("src", imageSource).appendTo("#reddit-content");
 	      });
-
-
-
-	      function testImage(url, callback, timeout) {
-	    timeout = timeout || 5000;
-	    var timedOut = false, timer;
-	    var img = new Image();
-	    img.onerror = img.onabort = function() {
-	        if (!timedOut) {
-	            clearTimeout(timer);
-	            callback(url, "error");
-	        }
-	    };
-	    img.onload = function() {
-	        if (!timedOut) {
-	            clearTimeout(timer);
-	            callback(url, "success");
-	        }
-	    };
-	    img.src = url;
-	    timer = setTimeout(function() {
-	        timedOut = true;
-	        callback(url, "timeout");
-	    }, timeout); 
-	}
-	    
-
-	function record(url, result) {
-	    //document.getElementById("result").innerHTML += "<span class='" + result + "'>" + 
-	        result + ": " + url + "</span><br>";
-	} 
 
 	      
 	    </script>
