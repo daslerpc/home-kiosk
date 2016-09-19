@@ -96,12 +96,7 @@ textarea {
    ========================================================================== */
 
 #kiosk-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(160, 160, 160, 0.5); /* so only the background is translucent */
-    padding: 1.5em;
+
 }
 
 #text-inspiration {
@@ -112,8 +107,7 @@ textarea {
 }
 
 #kiosk-main {
-    height: 1050px;
-    width: 1680px;
+
 }
 
 #kiosk-footer {
@@ -121,17 +115,23 @@ textarea {
     left: 0;
     bottom: 0;
     width: 100%;
-    background: rgba(160, 160, 160, 0.5); /* so only the background is translucent */
-    padding: 1.5em;
+    background: #aa863a;
+    padding: 50px;
     text-align: center;
-}
-
-#reddit-content {
-    height: 100%;
-    width: auto;
     align: center;
 }
 
+#reddit-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.alert {
+    
+}
 
 
 
