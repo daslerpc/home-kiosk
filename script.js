@@ -1,3 +1,8 @@
+function refreshScreen() {
+	setInspiration("text-inspiration");
+	setImage("reddit-content");
+}
+
 function setInspiration(element) {
 	var quotesToPull = 25;
 	var successful = false;
@@ -32,8 +37,8 @@ function setImage(element) {
 			imageSource += ".jpg";
 
 		// currently seems to have trouble with links that don't end in .jpg
-		document.getElementById(element).innerHTML += '<img id="background_image" src="' + imageSource + '">';
+		document.getElementById(element).innerHTML = '<img id="background_image" src="' + imageSource + '">';
 
-		
+
 	});
 }
