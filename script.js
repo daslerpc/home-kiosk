@@ -18,15 +18,19 @@ function setImage(element) {
 		var imageSource = data.data.children[index].data.url;
 		var imageLoaded = "unset";
 
-		imageLoaded = testImage(imageSource);
-		// document.getElementById("text-inspiration").innerHTML += imageLoaded;
+		// This doesn't work currently
+		imageLoaded = testImage(imageSource, element);
+
+		// if it doesn't end in a picture extension, add .jpg
+		if ( imageSource.indexOf("imgur") != -1 && ! /\.(jpe?g|png|gif|bmp)$/i.test(imageSource) ) 
+			imageSource += ".jpg";
 
 		// currently seems to have trouble with links that don't end in .jpg
 		document.getElementById(element).innerHTML += '<img src="' + imageSource + '">';
 	});
 }
 
-function testImage(url, timeout) {
+function testImage(url, element, timeout) {
 		var response = "unknown";
 	    timeout = timeout || 5000;
 	    
