@@ -1,10 +1,20 @@
 function setInspiration(element) {
 	var quotesToPull = 25;
+	var successful = false;
 
-	var index = Math.floor((Math.random() * (quotesToPull - 1)));
-
+	
 	$.getJSON("http://www.reddit.com/r/showerthoughts/hot/.json?count=" + quotesToPull, function(data) {
-		document.getElementById(element).innerHTML = data.data.children[index].data.title;	
+		do {
+			var index = Math.floor((Math.random() * (quotesToPull - 1)));			
+			var quote = data.data.children[index].data.title;
+			var stickied = data.data.children[index].data.stickied;
+
+			if( !stickied ) {
+				document.getElementById(element).innerHTML = quote;	
+				successful = true;
+			}
+		} while (!successful);	
+	
 	});
 }
 
